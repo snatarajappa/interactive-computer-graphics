@@ -1,3 +1,5 @@
+# CS 6610 - Spring 2022 Interactive Computer Graphics
+##This repository contains the projects for graduate interactive computer graphics course.
 {\rtf1\ansi\ansicpg1252\cocoartf2636
 \cocoatextscaling0\cocoaplatform0{\fonttbl\f0\fswiss\fcharset0 Helvetica;\f1\fnil\fcharset0 HelveticaNeue-Bold;\f2\fnil\fcharset0 AndaleMono;
 \f3\fmodern\fcharset0 Courier;\f4\fnil\fcharset0 Menlo-Regular;}
