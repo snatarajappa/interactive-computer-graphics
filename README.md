@@ -5,13 +5,13 @@ Course URL: https://graphics.cs.utah.edu/courses/cs6610/spring2022/
 
 ## Build Environment
 
-OS: OS X 12.01
+OS: OS X 12.01\n
 IDE: XCode 13.2.1
 
 Libararies and dependencies:
 * C++
 * OpenGL
-* FreeGlut
+* freeglut
 
 {\rtf1\ansi\ansicpg1252\cocoartf2636
 \cocoatextscaling0\cocoaplatform0{\fonttbl\f0\fswiss\fcharset0 Helvetica;\f1\fnil\fcharset0 HelveticaNeue-Bold;\f2\fnil\fcharset0 AndaleMono;
