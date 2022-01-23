@@ -1,7 +1,6 @@
 //
 //  main.cpp
 //  ICG
-//
 //  Created by Santhosh Natarajappa.
 //
 #define GL_SILENCE_DEPRECATION
@@ -14,63 +13,82 @@
 
 struct color
 {
-    float r, g, b, a;
+    float r, g, b;
 };
 
-void idle()
+void handleDisplay()
 {
-    glutPostRedisplay(); //CS6610 Requirement
+    //Clear the viewport
+    glClear(GL_COLOR_BUFFER_BIT | GL_DEPTH_BUFFER_BIT);
+    
+    //Rendering part
+    color startingColor = { 0.1, 0.4, 0.5};
+    color endingColor = { 1.0, 1.0, 1.0};
+    //cosine interpolation
+    const int currentTime = glutGet(GLUT_ELAPSED_TIME);
+    const float time = (1-(std::cos(float(currentTime)*0.001)))/2;
+    color interpolatedColor;
+    interpolatedColor.r = startingColor.r + (endingColor.r - startingColor.r)*time;
+    interpolatedColor.g = startingColor.g + (endingColor.g - startingColor.g)*time;
+    interpolatedColor.b = startingColor.b + (endingColor.b - startingColor.b)*time;
+    glClearColor(interpolatedColor.r, interpolatedColor.g, interpolatedColor.b, 1.0);
+    
+    //Swap buffers
+    glutSwapBuffers();
+    
 }
 
-void keys(unsigned char key, int x, int y)
+void handleKeyPress(unsigned char key, int x, int y)
 {
     switch (key)
     {
-        case 27: glutLeaveMainLoop(); //Requirement5: press esc to exit
-                 break;
+        case 27: //ESC
+            glutLeaveMainLoop();
+            break;
     }
 }
 
-color interpolate(color start, color finish, float time)
+void handleSpecialKeyPress(int key, int x, int y)
 {
-    color rgba;
-    rgba.r = (1 - time)*start.r + time*finish.r;
-    rgba.g = (1 - time)*start.g + time*finish.g;
-    rgba.b = (1 - time)*start.b + time*finish.b;
-    rgba.a = start.a * finish.a;
-    return rgba;
+    
 }
 
-void render()
-{
-    //interpolating between white and steelblue colors.
-    color begin = { 1.0, 1.0, 1.0, 1.0 }; //White
-    color end = { 0.137255, 0.419608, 0.556863 , 1.0}; //Steelblue
-
-    //using trigonometric functions to determine the new color using interpolation
-    const int current_t = glutGet(GLUT_ELAPSED_TIME);
-    const float t = std::cos(float(current_t)*0.001)*0.5 + 0.5; //formula: float t = cos(x)*0.5+0.5 to scale it between 0 and 1.
-    color current_c = interpolate(begin, end, t);
-
-    glClearColor(current_c.r, current_c.g, current_c.b, current_c.a); //Setting the new color
-    glClear(GL_COLOR_BUFFER_BIT); // Clearing the buffer with the preset color
-    glutSwapBuffers();
-
+void handleMouseClick(int button, int state, int x, int y){
+    
 }
-void initialize()
-{
-    glClearColor(0.209f, 0.224f, 0.224f, 1.0f); //Requirement4: Setting background color of the window initially
+
+void handleMouseMotion(int x, int y){
+    
 }
+
+void handleIdle()
+{
+    //Tell GLUT to redraw
+    glutPostRedisplay();
+}
+
 int main(int argc, char** argv)
 {
-    glutInit(&argc, argv); //to initialize GLUT
-    glutInitDisplayMode(GLUT_RGBA);
-    glutInitWindowSize(600, 600); //Requirement3: Specifying the size of the window
-    glutInitWindowPosition(100, 100);
-    glutCreateWindow("CS6610 Project 1 - Hello World");
-    glutDisplayFunc(render);
-    glutKeyboardFunc(keys);
-    glutIdleFunc(idle);
+    //Initialize freeglut
+    glutInit(&argc, argv);
+    //Create a window
+    glutInitWindowSize(1920, 1080);
+    glutInitWindowPosition(0, 0);
+    glutInitDisplayMode(GLUT_DOUBLE | GLUT_RGBA | GLUT_DEPTH);
+    glutCreateWindow("Project 1 - Hello World");
+    //Register display callback function
+    glutDisplayFunc(handleDisplay);
+    //Register keyboard callback function
+    glutKeyboardFunc(handleKeyPress);
+    //Register special keyboard callback function
+    glutSpecialFunc(handleSpecialKeyPress);
+    //Register mouse buttons callback functions
+    glutMouseFunc(handleMouseClick);
+    //Register mouse movement callback function
+    glutMotionFunc(handleMouseMotion);
+    //Register idle callback function
+    glutIdleFunc(handleIdle);
+    //Call main loop
     glutMainLoop();
     return 0;
 }
