@@ -50,6 +50,7 @@
 		8D39293127735B0C0052B368 /* main.cpp */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.cpp.cpp; path = main.cpp; sourceTree = "<group>"; };
 		8D39293927735E140052B368 /* OpenGL.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = OpenGL.framework; path = System/Library/Frameworks/OpenGL.framework; sourceTree = SDKROOT; };
 		8D39297527781AF70052B368 /* README.md */ = {isa = PBXFileReference; explicitFileType = net.daringfireball.markdown; path = README.md; sourceTree = "<group>"; };
+		8D44711B279D266D00F42C18 /* Project 1 - Hello World.pdf */ = {isa = PBXFileReference; lastKnownFileType = image.pdf; path = "Project 1 - Hello World.pdf"; sourceTree = "<group>"; };
 		8DC2BC0B2799F21800C806E0 /* libglut.3.11.0.dylib */ = {isa = PBXFileReference; lastKnownFileType = "compiled.mach-o.dylib"; name = libglut.3.11.0.dylib; path = lib/libglut.3.11.0.dylib; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
@@ -69,6 +70,7 @@
 		8D39292527735B0C0052B368 = {
 			isa = PBXGroup;
 			children = (
+				8D44711B279D266D00F42C18 /* Project 1 - Hello World.pdf */,
 				8D39297527781AF70052B368 /* README.md */,
 				8D39293027735B0C0052B368 /* helloworld */,
 				8D39292F27735B0C0052B368 /* Products */,
