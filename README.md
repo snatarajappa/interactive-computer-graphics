@@ -1,5 +1,6 @@
 # CS 6610 - Spring 2022 Interactive Computer Graphics
 This repository contains the projects for graduate interactive computer graphics course.
+
 Course URL: https://graphics.cs.utah.edu/courses/cs6610/spring2022/
 
 ## 
